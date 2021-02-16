@@ -12,4 +12,4 @@ Preferences include:
 - **Search String**
 - **Amount of Joke:** 1 - 10
 
-Here is the API: Jokes API(https://sv443.net/jokeapi/v2/)
+Here is the API: [Jokes API](https://sv443.net/jokeapi/v2/)
