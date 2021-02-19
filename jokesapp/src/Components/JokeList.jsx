@@ -26,6 +26,5 @@ export default function JokeList(props) {
                 )}
             </CardColumns>
         </div>
-
     )
 }
