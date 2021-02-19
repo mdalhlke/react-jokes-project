@@ -1,11 +1,14 @@
-import logo from './logo.svg';
+import React, {useEffect, useState} from 'react';
+import {Container, Row, Col, Spinner} from "react-bootstrap";
+import JokeList from "./JokeList";
+
+
 import './App.css';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
