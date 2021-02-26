@@ -24,19 +24,19 @@ function App() {
   return (
     <Container>
       <Row className='justify-content-md-center' style={{ marginTop: 60 }}>
-        <Col xs lg='2'>
+        <Col xs lg='10'>
           <h1 style={{ textAlign: 'center' }}>Joke Generator</h1>
         </Col>
       </Row>
 
       <Row className='justify-content-md-center' style={{ marginTop: 20 }}>
-        <Col xs lg='2'>
+        <Col xs lg='10'>
           <SearchBar />
         </Col>
       </Row>
 
       <Row className='justify-content-md-center' style={{ marginTop: 20 }}>
-        <Col xs lg='2'>
+        <Col xs lg='10'>
           <JokeList jokes={jokes} />
         </Col>
       </Row>
