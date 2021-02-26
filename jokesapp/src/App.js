@@ -2,7 +2,6 @@ import React, {useEffect, useState} from 'react';
 import {Container, Row, Col, Spinner} from "react-bootstrap";
 import JokeList from "./Components/JokeList";
 
-
 import './App.css';
 
 function App() {
@@ -30,7 +29,7 @@ function App() {
         className="justify-content-md-center"
         style = {{marginTop:60}}>
         <Col xs lg="2">
-          <h1 style = {{textAlign: "center"}}>Blog App</h1>
+          <h1 style = {{textAlign: "center"}}>Joke Generator</h1>
         </Col>
       </Row>
 
