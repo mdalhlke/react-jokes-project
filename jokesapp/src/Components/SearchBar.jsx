@@ -8,7 +8,7 @@ export default function SearchBar() {
         <FormControl
           placeholder='Search'
           aria-label='Search'
-          aria-describeby='basic-addon2'
+          aria-describedby='basic-addon2'
         />
         <InputGroup.Append>
           <Button variant='outline-secondary'>Button</Button>
