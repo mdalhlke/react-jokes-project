@@ -36,14 +36,15 @@ function App() {
         </Col>
       </Row>
 
-      <Row className="justify-content-md-center" style={{ marginTop: 100 }}>
+      <Row className="justify-content-md-center" style={{ marginTop: 200 }}>
         <Col xs lg="20">
           <JokeList jokes={jokes} />
         </Col>
       </Row>
 
-      <Row classname="justify-content-md-center" style={{ marginTop: -5100 }}>
+      <Row classname="justify-content-md-center" style={{ marginTop: -5200 }}>
         <Col xs lg="20">
+          <h4 style={{ textAlign: "left" }}>Filters</h4>
           <Filter />
         </Col>
       </Row>
