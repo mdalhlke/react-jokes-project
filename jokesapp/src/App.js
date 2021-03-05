@@ -19,7 +19,7 @@ function App() {
   }, [setLoading, setJokes]);
 
   if (loading) {
-    return <Spinner animation="border"/>;
+    return <Spinner animation="border" />;
   }
 
   return (
@@ -42,7 +42,7 @@ function App() {
         </Col>
       </Row>
 
-      <Row classname="justify-content-md-center" style={{ marginTop: -5200 }}>
+      <Row classname="justify-content-md-center" style={{ marginTop: -900 }}>
         <Col xs lg="20">
           <h4 style={{ textAlign: "left" }}>Filters</h4>
           <Filter />
