@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import { Container, Row, Col, Spinner } from 'react-bootstrap';
-import JokeList from './Components/JokeList';
-import SearchBar from './Components/SearchBar';
+import React, { useEffect, useState } from "react";
+import { Container, Row, Col, Spinner } from "react-bootstrap";
+import JokeList from "./Components/JokeList";
+import SearchBar from "./Components/SearchBar";
+import Filter from "./Components/Filter";
 
 function App() {
   const [jokes, setJokes] = useState([]);
@@ -9,7 +10,7 @@ function App() {
 
   useEffect(() => {
     setLoading(true);
-    fetch('https://jsonplaceholder.typicode.com/posts')
+    fetch("https://jsonplaceholder.typicode.com/posts")
       .then((response) => response.json())
       .then((json) => {
         setJokes(json);
@@ -18,26 +19,32 @@ function App() {
   }, [setLoading, setJokes]);
 
   if (loading) {
-    return <Spinner animation='border' />;
+    return <Spinner animation="border" />;
   }
 
   return (
     <Container>
-      <Row className='justify-content-md-center' style={{ marginTop: 60 }}>
-        <Col xs lg='10'>
-          <h1 style={{ textAlign: 'center' }}>Joke Generator</h1>
+      <Row className="justify-content-md-center" style={{ marginTop: 60 }}>
+        <Col xs lg="10">
+          <h1 style={{ textAlign: "center" }}>Joke Generator</h1>
         </Col>
       </Row>
 
-      <Row className='justify-content-md-center' style={{ marginTop: 20 }}>
-        <Col xs lg='10'>
+      <Row className="justify-content-md-center" style={{ marginTop: 20 }}>
+        <Col xs lg="10">
           <SearchBar />
         </Col>
       </Row>
 
-      <Row className='justify-content-md-center' style={{ marginTop: 20 }}>
-        <Col xs lg='10'>
+      <Row className="justify-content-md-center" style={{ marginTop: 100 }}>
+        <Col xs lg="20">
           <JokeList jokes={jokes} />
+        </Col>
+      </Row>
+
+      <Row classname="justify-content-md-center" style={{ marginTop: -5100 }}>
+        <Col xs lg="20">
+          <Filter />
         </Col>
       </Row>
     </Container>
