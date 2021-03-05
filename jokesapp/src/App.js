@@ -10,16 +10,16 @@ function App() {
 
   useEffect(() => {
     setLoading(true);
-    fetch("https://jsonplaceholder.typicode.com/posts")
+    fetch("https://v2.jokeapi.dev/joke/Any?amount=10&safe-mode")
       .then((response) => response.json())
       .then((json) => {
-        setJokes(json);
+        setJokes(json.jokes);
         setLoading(false);
       });
   }, [setLoading, setJokes]);
 
   if (loading) {
-    return <Spinner animation="border" />;
+    return <Spinner animation="border"/>;
   }
 
   return (

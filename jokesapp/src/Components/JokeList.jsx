@@ -8,13 +8,16 @@ export default function JokeList(props) {
         <div>
             <CardColumns>
                 {jokes && jokes.map((joke) =>
-                    <Card key={joke.id}>
+                    <Card border={joke.safe ? "success" : "danger"} key={joke.id}>
                         <Card.Body>
-                            <Card.Title>{joke.title.toUpperCase()}</Card.Title>
-                            <Card.Text>{`${joke.body.slice(0, 20)} ...`}</Card.Text>
+                             <Card.Title>{joke.joke}</Card.Title>
+                             
+                             <Card.Title>{joke.setup}</Card.Title>
+                             <Card.Text>{joke.delivery}</Card.Text>
                         </Card.Body>
 
-                        <Card.Footer style={{textAlign: "right", padding: 5}}>
+                        <Card.Footer style={{textAlign: "center", padding: 5}}>
+                            <Card.Text>{joke.category}</Card.Text>
                         </Card.Footer>
                     </Card>
                 )}
