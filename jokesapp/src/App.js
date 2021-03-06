@@ -3,6 +3,7 @@ import { Container, Row, Col, Spinner } from 'react-bootstrap';
 import JokeList from './Components/JokeList';
 import SearchBar from './Components/SearchBar';
 import Filter from './Components/Filter';
+import GenerateButton from './Components/GenerateButton';
 
 function App() {
   const [jokes, setJokes] = useState([]);
@@ -27,6 +28,12 @@ function App() {
       <Row className='justify-content-md-center' style={{ marginTop: 60 }}>
         <Col xs lg='10'>
           <h1 style={{ textAlign: 'center' }}>Joke Generator</h1>
+        </Col>
+      </Row>
+
+      <Row className='justify-content-md-center' style={{ marginTop: 20 }}>
+        <Col xs lg='10'>
+          <GenerateButton />
         </Col>
       </Row>
 
