@@ -11,12 +11,6 @@ export default function CheckboxLabels() {
     checkPun: true,
     checkSpooky: true,
     checkChrist: true,
-    checkNSFW: true,
-    checkReligious: true,
-    checkPolitical: true,
-    checkRacist: true,
-    checkSexist: true,
-    checkExplicit: true,
   });
 
   const handleChange = (event) => {
@@ -84,66 +78,6 @@ export default function CheckboxLabels() {
           />
         }
         label="Christmas"
-      />
-      <FormControlLabel
-        control={
-          <Checkbox
-            checked={state.checkNSFW}
-            onChange={handleChange}
-            name="checkNSFW"
-          />
-        }
-        label="NSFW"
-      />
-      <FormControlLabel
-        control={
-          <Checkbox
-            checked={state.checkReligious}
-            onChange={handleChange}
-            name="checkReligious"
-          />
-        }
-        label="Religious"
-      />
-      <FormControlLabel
-        control={
-          <Checkbox
-            checked={state.checkPolitical}
-            onChange={handleChange}
-            name="checkPolitical"
-          />
-        }
-        label="Political"
-      />
-      <FormControlLabel
-        control={
-          <Checkbox
-            checked={state.checkRacist}
-            onChange={handleChange}
-            name="checkRacist"
-          />
-        }
-        label="Racist"
-      />
-      <FormControlLabel
-        control={
-          <Checkbox
-            checked={state.checkSexist}
-            onChange={handleChange}
-            name="checkSexist"
-          />
-        }
-        label="Sexist"
-      />
-      <FormControlLabel
-        control={
-          <Checkbox
-            checked={state.checkExplicit}
-            onChange={handleChange}
-            name="checkExplicit"
-          />
-        }
-        label="Explicit"
       />
     </FormGroup>
   );
