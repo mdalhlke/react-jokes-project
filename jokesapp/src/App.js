@@ -44,16 +44,15 @@ export default function App() {
     setSearch(searchString);
   }
 
-  function getFilters(fil) {
-    setFilter(fil);
+  function getFilters(filters) {
+    setFilter(filters);
   }
 
-  function getBlacklist(bl) {
-    setBlacklist(bl);
+  function getBlacklist(blacklists) {
+    setBlacklist(blacklists);
   }
 
   function handleClick() {
-    //TODO: FILL IN activeFilters AND activeBlacklist
     getJokes(filter, blacklist, search);
     //console.log(search);
     //console.log(filter);
@@ -84,7 +83,7 @@ export default function App() {
     fetch(
       `https://v2.jokeapi.dev/joke/${filterInput.join(
         ','
-      )}?blacklist=${blacklistInput.join(',')}&contains=${search}amount=10`
+      )}?blacklist=${blacklistInput.join(',')}&contains=${search}&amount=10`
     )
       .then((response) => response.json())
       .then((json) => {
@@ -92,6 +91,7 @@ export default function App() {
         console.log(jokes);
         setLoading(false);
       });
+    //TODO: JOKES NOT SHOWING UP
   }
 
   if (loading) {
