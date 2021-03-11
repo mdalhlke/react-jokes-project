@@ -91,7 +91,6 @@ export default function App() {
         console.log(jokes);
         setLoading(false);
       });
-    //TODO: JOKES NOT SHOWING UP
   }
 
   if (loading) {
