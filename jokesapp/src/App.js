@@ -10,6 +10,8 @@ export default function App() {
   const [jokes, setJokes] = useState([]);
   const [loading, setLoading] = useState(false);
   const [search, setSearch] = useState('');
+  const [filter, setFilter] = useState([]);
+  const [blacklist, setBlacklist] = useState([]);
 
   const filters = [
     'Programming',
@@ -42,16 +44,23 @@ export default function App() {
     setSearch(searchString);
   }
 
+  function getFilters(fil) {
+    setFilter(fil);
+  }
+
+  function getBlacklist(bl) {
+    setBlacklist(bl);
+  }
+
   function handleClick() {
     //TODO: FILL IN activeFilters AND activeBlacklist
-    //getJokes(search);
+    getJokes(filter, blacklist, search);
     console.log(search);
-    console.log('clicked');
+    console.log(filter);
+    console.log(blacklist);
   }
 
   function getJokes(activeFilters, activeBlacklist, search) {
-    setLoading(true);
-
     let filterInput = [];
     let blacklistInput = [];
 
@@ -93,9 +102,9 @@ export default function App() {
       <Row className='justify-content-md-center' style={{ marginTop: 20 }}>
         <Col xs lg='20'>
           <h4 style={{ textAlign: 'left' }}>Category Types</h4>
-          <Filter />
+          <Filter getFilters={getFilters} />
           <h4 style={{ textAlign: 'left' }}>Blacklisted Types</h4>
-          <Blacklisted />
+          <Blacklisted getBlacklist={getBlacklist} />
         </Col>
       </Row>
 

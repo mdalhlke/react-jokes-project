@@ -1,10 +1,12 @@
-import React from "react";
-import FormGroup from "@material-ui/core/FormGroup";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import Checkbox from "@material-ui/core/Checkbox";
+import React, { useState } from 'react';
+import FormGroup from '@material-ui/core/FormGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Checkbox from '@material-ui/core/Checkbox';
 
-export default function CheckboxLabels() {
-  const [state, setState] = React.useState({
+export default function CheckboxLabels(props) {
+  const { getFilters } = props;
+
+  const [state, setState] = useState({
     checkProgramming: true,
     checkMisc: true,
     checkDark: true,
@@ -15,6 +17,7 @@ export default function CheckboxLabels() {
 
   const handleChange = (event) => {
     setState({ ...state, [event.target.name]: event.target.checked });
+    getFilters({ ...state, [event.target.name]: event.target.checked });
   };
 
   return (
@@ -24,60 +27,60 @@ export default function CheckboxLabels() {
           <Checkbox
             checked={state.checkProgramming}
             onChange={handleChange}
-            name="checkProgramming"
+            name='checkProgramming'
           />
         }
-        label="Programming"
+        label='Programming'
       />
       <FormControlLabel
         control={
           <Checkbox
             checked={state.checkMisc}
             onChange={handleChange}
-            name="checkMisc"
+            name='checkMisc'
           />
         }
-        label="Miscellaneous"
+        label='Miscellaneous'
       />
       <FormControlLabel
         control={
           <Checkbox
             checked={state.checkDark}
             onChange={handleChange}
-            name="checkDark"
+            name='checkDark'
           />
         }
-        label="Dark"
+        label='Dark'
       />
       <FormControlLabel
         control={
           <Checkbox
             checked={state.checkPun}
             onChange={handleChange}
-            name="checkPun"
+            name='checkPun'
           />
         }
-        label="Pun"
+        label='Pun'
       />
       <FormControlLabel
         control={
           <Checkbox
             checked={state.checkSpooky}
             onChange={handleChange}
-            name="checkSpooky"
+            name='checkSpooky'
           />
         }
-        label="Spooky"
+        label='Spooky'
       />
       <FormControlLabel
         control={
           <Checkbox
             checked={state.checkChrist}
             onChange={handleChange}
-            name="checkChrist"
+            name='checkChrist'
           />
         }
-        label="Christmas"
+        label='Christmas'
       />
     </FormGroup>
   );
