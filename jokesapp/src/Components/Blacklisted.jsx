@@ -13,7 +13,7 @@ export default function CheckboxLabels(props) {
     racist: true,
     sexist: true,
     explicit: true,
-  },);
+  });
 
   const handleChange = (event) => {
     setState({ ...state, [event.target.name]: event.target.checked });
