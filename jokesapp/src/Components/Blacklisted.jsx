@@ -7,12 +7,12 @@ export default function CheckboxLabels(props) {
   const { getBlacklist } = props;
 
   const [state, setState] = React.useState({
-    checkNSFW: true,
-    checkReligious: true,
-    checkPolitical: true,
-    checkRacist: true,
-    checkSexist: true,
-    checkExplicit: true,
+    nsfw: true,
+    religious: true,
+    political: true,
+    racist: true,
+    sexist: true,
+    explicit: true,
   });
 
   const handleChange = (event) => {
@@ -24,20 +24,16 @@ export default function CheckboxLabels(props) {
     <FormGroup row>
       <FormControlLabel
         control={
-          <Checkbox
-            checked={state.checkNSFW}
-            onChange={handleChange}
-            name='checkNSFW'
-          />
+          <Checkbox checked={state.nsfw} onChange={handleChange} name='nsfw' />
         }
         label='NSFW'
       />
       <FormControlLabel
         control={
           <Checkbox
-            checked={state.checkReligious}
+            checked={state.religious}
             onChange={handleChange}
-            name='checkReligious'
+            name='religious'
           />
         }
         label='Religious'
@@ -45,9 +41,9 @@ export default function CheckboxLabels(props) {
       <FormControlLabel
         control={
           <Checkbox
-            checked={state.checkPolitical}
+            checked={state.political}
             onChange={handleChange}
-            name='checkPolitical'
+            name='political'
           />
         }
         label='Political'
@@ -55,9 +51,9 @@ export default function CheckboxLabels(props) {
       <FormControlLabel
         control={
           <Checkbox
-            checked={state.checkRacist}
+            checked={state.racist}
             onChange={handleChange}
-            name='checkRacist'
+            name='racist'
           />
         }
         label='Racist'
@@ -65,9 +61,9 @@ export default function CheckboxLabels(props) {
       <FormControlLabel
         control={
           <Checkbox
-            checked={state.checkSexist}
+            checked={state.sexist}
             onChange={handleChange}
-            name='checkSexist'
+            name='sexist'
           />
         }
         label='Sexist'
@@ -75,9 +71,9 @@ export default function CheckboxLabels(props) {
       <FormControlLabel
         control={
           <Checkbox
-            checked={state.checkExplicit}
+            checked={state.explicit}
             onChange={handleChange}
-            name='checkExplicit'
+            name='explicit'
           />
         }
         label='Explicit'

@@ -7,12 +7,12 @@ export default function CheckboxLabels(props) {
   const { getFilters } = props;
 
   const [state, setState] = useState({
-    checkProgramming: true,
-    checkMisc: true,
-    checkDark: true,
-    checkPun: true,
-    checkSpooky: true,
-    checkChrist: true,
+    Programming: true,
+    Miscellaneous: true,
+    Dark: true,
+    Pun: true,
+    Spooky: true,
+    Christmas: true,
   });
 
   const handleChange = (event) => {
@@ -25,9 +25,9 @@ export default function CheckboxLabels(props) {
       <FormControlLabel
         control={
           <Checkbox
-            checked={state.checkProgramming}
+            checked={state.Programming}
             onChange={handleChange}
-            name='checkProgramming'
+            name='Programming'
           />
         }
         label='Programming'
@@ -35,39 +35,31 @@ export default function CheckboxLabels(props) {
       <FormControlLabel
         control={
           <Checkbox
-            checked={state.checkMisc}
+            checked={state.Miscellaneous}
             onChange={handleChange}
-            name='checkMisc'
+            name='Miscellaneous'
           />
         }
         label='Miscellaneous'
       />
       <FormControlLabel
         control={
-          <Checkbox
-            checked={state.checkDark}
-            onChange={handleChange}
-            name='checkDark'
-          />
+          <Checkbox checked={state.Dark} onChange={handleChange} name='Dark' />
         }
         label='Dark'
       />
       <FormControlLabel
         control={
-          <Checkbox
-            checked={state.checkPun}
-            onChange={handleChange}
-            name='checkPun'
-          />
+          <Checkbox checked={state.Pun} onChange={handleChange} name='Pun' />
         }
         label='Pun'
       />
       <FormControlLabel
         control={
           <Checkbox
-            checked={state.checkSpooky}
+            checked={state.Spooky}
             onChange={handleChange}
-            name='checkSpooky'
+            name='Spooky'
           />
         }
         label='Spooky'
@@ -75,9 +67,9 @@ export default function CheckboxLabels(props) {
       <FormControlLabel
         control={
           <Checkbox
-            checked={state.checkChrist}
+            checked={state.Christmas}
             onChange={handleChange}
-            name='checkChrist'
+            name='Christmas'
           />
         }
         label='Christmas'

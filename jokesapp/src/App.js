@@ -13,22 +13,22 @@ export default function App() {
   const [filter, setFilter] = useState([]);
   const [blacklist, setBlacklist] = useState([]);
 
-  const filters = [
-    'Programming',
-    'Miscellaneous',
-    'Dark',
-    'Pun',
-    'Spooky',
-    'Christmas',
-  ];
-  const blacklists = [
-    'nsfw',
-    'religious',
-    'political',
-    'racist',
-    'sexist',
-    'explicit',
-  ];
+  // const filters = [
+  //   'Programming',
+  //   'Miscellaneous',
+  //   'Dark',
+  //   'Pun',
+  //   'Spooky',
+  //   'Christmas',
+  // ];
+  // const blacklists = [
+  //   'nsfw',
+  //   'religious',
+  //   'political',
+  //   'racist',
+  //   'sexist',
+  //   'explicit',
+  // ];
 
   useEffect(() => {
     setLoading(true);
@@ -55,28 +55,41 @@ export default function App() {
   function handleClick() {
     //TODO: FILL IN activeFilters AND activeBlacklist
     getJokes(filter, blacklist, search);
-    console.log(search);
-    console.log(filter);
-    console.log(blacklist);
+    //console.log(search);
+    //console.log(filter);
+    //console.log(blacklist);
   }
 
   function getJokes(activeFilters, activeBlacklist, search) {
     let filterInput = [];
     let blacklistInput = [];
 
-    for (let i = 0; i < activeFilters.length; i++) {
-      activeFilters[i] ? filterInput.push(filters[i]) : (i = i);
-      activeBlacklist[i] ? blacklistInput.push(blacklists[i]) : (i = i);
+    // for (let i = 0; i < activeFilters.length; i++) {
+    //   activeFilters[i] ? filterInput.push(filters[i]) : (i = i);
+    //   activeBlacklist[i] ? blacklistInput.push(blacklists[i]) : (i = i);
+    // }
+
+    for (const key in activeFilters) {
+      if (activeFilters[key]) {
+        filterInput.push(key);
+      }
+    }
+
+    for (const key in activeBlacklist) {
+      if (activeBlacklist[key]) {
+        blacklistInput.push(key);
+      }
     }
 
     fetch(
       `https://v2.jokeapi.dev/joke/${filterInput.join(
         ','
-      )}?blacklistFlags=${blacklistInput.join(',')}&contains=${search}amount=10`
+      )}?blacklist=${blacklistInput.join(',')}&contains=${search}amount=10`
     )
       .then((response) => response.json())
       .then((json) => {
         setJokes(json.jokes);
+        console.log(jokes);
         setLoading(false);
       });
   }
