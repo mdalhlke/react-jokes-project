@@ -10,25 +10,22 @@ export default function App() {
   const [jokes, setJokes] = useState([]);
   const [loading, setLoading] = useState(false);
   const [search, setSearch] = useState('');
-  const [filter, setFilter] = useState([]);
-  const [blacklist, setBlacklist] = useState([]);
-
-  // const filters = [
-  //   'Programming',
-  //   'Miscellaneous',
-  //   'Dark',
-  //   'Pun',
-  //   'Spooky',
-  //   'Christmas',
-  // ];
-  // const blacklists = [
-  //   'nsfw',
-  //   'religious',
-  //   'political',
-  //   'racist',
-  //   'sexist',
-  //   'explicit',
-  // ];
+  const [filter, setFilter] = useState({
+    Programming: true,
+    Miscellaneous: true,
+    Dark: true,
+    Pun: true,
+    Spooky: true,
+    Christmas: true,
+  });
+  const [blacklist, setBlacklist] = useState({
+    nsfw: true,
+    religious: true,
+    political: true,
+    racist: true,
+    sexist: true,
+    explicit: true,
+  });
 
   useEffect(() => {
     setLoading(true);
@@ -54,19 +51,11 @@ export default function App() {
 
   function handleClick() {
     getJokes(filter, blacklist, search);
-    //console.log(search);
-    //console.log(filter);
-    //console.log(blacklist);
   }
 
   function getJokes(activeFilters, activeBlacklist, search) {
     let filterInput = [];
     let blacklistInput = [];
-
-    // for (let i = 0; i < activeFilters.length; i++) {
-    //   activeFilters[i] ? filterInput.push(filters[i]) : (i = i);
-    //   activeBlacklist[i] ? blacklistInput.push(blacklists[i]) : (i = i);
-    // }
 
     for (const key in activeFilters) {
       if (activeFilters[key]) {
