@@ -5,6 +5,7 @@ import SearchBar from './Components/SearchBar';
 import Filter from './Components/Filter';
 import Blacklisted from './Components/Blacklisted';
 import GenerateButton from './Components/GenerateButton';
+import SafeMode from './Components/SafeMode';
 
 export default function App() {
   const [jokes, setJokes] = useState([]);
@@ -62,6 +63,9 @@ export default function App() {
     let filterInput = [];
     let blacklistInput = [];
 
+    console.log(safeMode);
+    console.log(safeMode ? "&safe-mode" : "false");
+
     for (const key in activeFilters) {
       if (activeFilters[key]) {
         filterInput.push(key);
@@ -77,7 +81,7 @@ export default function App() {
     fetch(
       `https://v2.jokeapi.dev/joke/${filterInput.join(
         ','
-      )}?blacklist=${blacklistInput.join(',')}&contains=${search}&amount=10${safeMode ? "&safe-mode" : ""}`
+      )}?blacklist=${blacklistInput.join(',')}&contains=${search}&amount=10${safeMode? "&safe-mode" : ""}`
     )
       .then((response) => response.json())
       .then((json) => {
@@ -111,6 +115,13 @@ export default function App() {
           <Filter getFilters={getFilters} />
           <h4 style={{ textAlign: 'left' }}>Blacklisted Types</h4>
           <Blacklisted getBlacklist={getBlacklist} getSafe={getSafe}/>
+        </Col>
+      </Row>
+
+      <Row className='justify-content-md-center' style={{ marginTop: 20 }}>
+        <Col xs lg='20'>
+          <h4 style={{ textAlign: 'left' }}>Safe Mode</h4>
+          <SafeMode getSafe={getSafe}/>
         </Col>
       </Row>
 

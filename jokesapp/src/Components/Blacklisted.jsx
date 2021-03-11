@@ -4,7 +4,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 
 export default function CheckboxLabels(props) {
-  const { getBlacklist, getSafe } = props;
+  const { getBlacklist } = props;
 
   const [state, setState] = React.useState({
     nsfw: true,
@@ -13,82 +13,71 @@ export default function CheckboxLabels(props) {
     racist: true,
     sexist: true,
     explicit: true,
-  }, {safe:true});
+  },);
 
   const handleChange = (event) => {
     setState({ ...state, [event.target.name]: event.target.checked });
     getBlacklist({ ...state, [event.target.name]: event.target.checked });
-    getSafe({ ...state, [event.target.name]: event.target.checked });
   };
 
   return (
-    <div>
-      <FormGroup row>
-        <FormControlLabel
-          control={
-            <Checkbox checked={state.safe} onChange={handleChange} name='safe' />
-          }
-          label='Safe Mode'
-        />
-      </FormGroup>
-      <FormGroup row>
-        <FormControlLabel
-          control={
-            <Checkbox checked={state.nsfw} onChange={handleChange} name='nsfw' />
-          }
-          label='NSFW'
-        />
-        <FormControlLabel
-          control={
-            <Checkbox
-              checked={state.religious}
-              onChange={handleChange}
-              name='religious'
-            />
-          }
-          label='Religious'
-        />
-        <FormControlLabel
-          control={
-            <Checkbox
-              checked={state.political}
-              onChange={handleChange}
-              name='political'
-            />
-          }
-          label='Political'
-        />
-        <FormControlLabel
-          control={
-            <Checkbox
-              checked={state.racist}
-              onChange={handleChange}
-              name='racist'
-            />
-          }
-          label='Racist'
-        />
-        <FormControlLabel
-          control={
-            <Checkbox
-              checked={state.sexist}
-              onChange={handleChange}
-              name='sexist'
-            />
-          }
-          label='Sexist'
-        />
-        <FormControlLabel
-          control={
-            <Checkbox
-              checked={state.explicit}
-              onChange={handleChange}
-              name='explicit'
-            />
-          }
-          label='Explicit'
-        />
-      </FormGroup>
-    </div>
+    <FormGroup row>
+      <FormControlLabel
+        control={
+          <Checkbox checked={state.nsfw} onChange={handleChange} name='nsfw' />
+        }
+        label='NSFW'
+      />
+      <FormControlLabel
+        control={
+          <Checkbox
+            checked={state.religious}
+            onChange={handleChange}
+            name='religious'
+          />
+        }
+        label='Religious'
+      />
+      <FormControlLabel
+        control={
+          <Checkbox
+            checked={state.political}
+            onChange={handleChange}
+            name='political'
+          />
+        }
+        label='Political'
+      />
+      <FormControlLabel
+        control={
+          <Checkbox
+            checked={state.racist}
+            onChange={handleChange}
+            name='racist'
+          />
+        }
+        label='Racist'
+      />
+      <FormControlLabel
+        control={
+          <Checkbox
+            checked={state.sexist}
+            onChange={handleChange}
+            name='sexist'
+          />
+        }
+        label='Sexist'
+      />
+      <FormControlLabel
+        control={
+          <Checkbox
+            checked={state.explicit}
+            onChange={handleChange}
+            name='explicit'
+          />
+        }
+        label='Explicit'
+      />
+    </FormGroup>
   );
 }
