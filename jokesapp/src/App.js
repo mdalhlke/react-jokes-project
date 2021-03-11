@@ -26,6 +26,7 @@ export default function App() {
     sexist: true,
     explicit: true,
   });
+  const [safe, setSafe] = useState(true);
 
   useEffect(() => {
     setLoading(true);
@@ -49,11 +50,15 @@ export default function App() {
     setBlacklist(blacklists);
   }
 
-  function handleClick() {
-    getJokes(filter, blacklist, search);
+  function getSafe(safeMode) {
+    setSafe(safeMode);
   }
 
-  function getJokes(activeFilters, activeBlacklist, search) {
+  function handleClick() {
+    getJokes(filter, blacklist, search, safe);
+  }
+
+  function getJokes(activeFilters, activeBlacklist, search, safeMode) {
     let filterInput = [];
     let blacklistInput = [];
 
@@ -72,7 +77,7 @@ export default function App() {
     fetch(
       `https://v2.jokeapi.dev/joke/${filterInput.join(
         ','
-      )}?blacklist=${blacklistInput.join(',')}&contains=${search}&amount=10`
+      )}?blacklist=${blacklistInput.join(',')}&contains=${search}&amount=10${safeMode ? "&safe-mode" : ""}`
     )
       .then((response) => response.json())
       .then((json) => {
@@ -105,7 +110,7 @@ export default function App() {
           <h4 style={{ textAlign: 'left' }}>Category Types</h4>
           <Filter getFilters={getFilters} />
           <h4 style={{ textAlign: 'left' }}>Blacklisted Types</h4>
-          <Blacklisted getBlacklist={getBlacklist} />
+          <Blacklisted getBlacklist={getBlacklist} getSafe={getSafe}/>
         </Col>
       </Row>
 
