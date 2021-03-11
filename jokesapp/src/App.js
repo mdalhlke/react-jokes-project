@@ -10,6 +10,9 @@ function App() {
   const [jokes, setJokes] = useState([]);
   const [loading, setLoading] = useState(false);
 
+  const filters = ["Programming", "Miscellaneous", "Dark", "Pun", "Spooky", "Christmas"]
+  const blacklists = ["nsfw","religious","political","racist","sexist","explicit"]
+
   useEffect(() => {
     setLoading(true);
     fetch("https://v2.jokeapi.dev/joke/Any?amount=10&safe-mode")
@@ -20,8 +23,27 @@ function App() {
       });
   }, [setLoading, setJokes]);
 
+  function getJokes(activeFilters, activeBlacklist, search) {
+    setLoading(true);
+    
+    let filterInput = [];
+    let blacklistInput = [];
+    
+    for (let i = 0; i < activeFilters.length; i++) {
+      activeFilters[i] ? filterInput.push(filters[i]) : i = i
+      activeBlacklist[i] ? blacklistInput.push(blacklists[i]) : i = i
+    }
+
+    fetch(`https://v2.jokeapi.dev/joke/${filterInput.join(",")}?blacklistFlags=${blacklistInput.join(",")}&contains=${search}amount=10`)
+      .then((response) => response.json())
+      .then((json) => {
+        setJokes(json.jokes);
+        setLoading(false);
+      });
+  }
+
   if (loading) {
-    return <Spinner animation="border" />;
+    return <Spinner animation="border" style={{margin:"50%"}}/>;
   }
 
   return (
@@ -34,28 +56,28 @@ function App() {
 
       <Row className="justify-content-md-center" style={{ marginTop: 20 }}>
         <Col xs lg="10">
-          <GenerateButton />
-        </Col>
-      </Row>
-
-      <Row className="justify-content-md-center" style={{ marginTop: 20 }}>
-        <Col xs lg="10">
           <SearchBar />
         </Col>
       </Row>
 
-      <Row className="justify-content-md-center" style={{ marginTop: 200 }}>
-        <Col xs lg="20">
-          <JokeList jokes={jokes} />
-        </Col>
-      </Row>
-
-      <Row classname="justify-content-md-center" style={{ marginTop: -925 }}>
+      <Row classname="justify-content-md-center">
         <Col xs lg="20">
           <h4 style={{ textAlign: "left" }}>Category Types</h4>
           <Filter />
           <h4 style={{ textAlign: "left" }}>Blacklisted Types</h4>
           <Blacklisted />
+        </Col>
+      </Row>
+
+      <Row className="justify-content-md-center">
+        <Col xs lg="10">
+          <GenerateButton />
+        </Col>
+      </Row>
+
+      <Row className="justify-content-md-center" style={{paddingTop: 20}}>
+        <Col xs lg="20">
+          <JokeList jokes={jokes} />
         </Col>
       </Row>
     </Container>
